@@ -1,0 +1,63 @@
+enable
+configure terminal
+hostname SWM1
+no ip domain-lookup
+vtp domain ITLA
+vtp mode server
+vtp version 2
+vtp password cisco123
+spanning-tree mode rapid-pvst
+vlan 10
+ name ESTUDIANTES
+vlan 20
+ name DOCENTES
+vlan 30
+ name ACADEMICOS
+vlan 40
+ name FINANZAS
+vlan 50
+ name DATACENTER
+vlan 60
+ name GESTION
+vlan 70
+ name VOZ
+vlan 80
+ name BLACKHULL_R1
+vlan 90
+ name BLACKHULL_R2
+vlan 99
+ name NATIVA
+interface e0/0
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99
+ no shutdown
+interface range e0/1-3
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99
+ channel-group 1 mode active
+ no shutdown
+interface port-channel1
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99
+ no shutdown
+interface e1/0
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 20,99
+ no shutdown
+interface e1/1
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,99
+ no shutdown
+interface e1/2
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 60,99
+ no shutdown
+spanning-tree vlan 1-4094 root primary
+end
+write memory
