@@ -1,0 +1,27 @@
+------VLAN CONFIG (BASED ON JOUSE'S CONFIG)------
+
+enable
+configure terminal
+hostname SW
+no ip domain-lookup
+vtp domain ITLA
+vtp mode transparent
+vtp version 2
+vtp password cisco123
+spanning-tree mode rapid-pvst
+vlan 50
+ name DATACENTER
+vlan 99
+ name NATIVA
+interface e0/0
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 50,99
+ no shutdown
+interface e0/1
+ switchport mode access
+ switchport access vlan 50
+ spanning-tree portfast
+ no shutdown
+end
+write memory
