@@ -1,0 +1,58 @@
+!!!!! Configuracion inicial R1-CORE
+
+
+!! Configuracion basica
+en
+config t
+hostname R1-CORE
+no ip domain-lookup
+ipv6 unicast-routing
+service password-encryption
+ip domain-name grupo6.com
+crypto key generate rsa general-keys modulus 1024
+
+!!!!! Linea de consola
+lin con 0
+password grupo6
+login
+logging synchronous
+exec-timeout 0 0
+exit
+
+!!!!! Linea VTY
+lin vty 0 4
+password grupo6
+login
+transport input ssh
+exit
+
+
+!!!!!!!! Configuracion de interfaces
+int e0/0
+description Conexion a SWM1
+ip address 172.26.10.165 255.255.255.252
+ipv6 address 2001:25:26:11::1/64
+no sh
+exit
+
+int e0/1
+description Conexion a SWM2
+ip address 172.26.10.169 255.255.255.252
+ipv6 address 2001:25:26:12::1/64
+no sh
+exit
+
+int e0/2
+description Conexion a ISP
+ip address dhcp
+no sh
+exit
+
+int s1/0
+description Conexion a R2
+ip address 172.26.10.162 255.255.255.252
+ipv6 address 2001:25:26:10::2/64
+no sh
+exit
+
+do wr

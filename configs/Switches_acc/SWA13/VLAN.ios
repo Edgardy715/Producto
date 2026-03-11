@@ -1,0 +1,38 @@
+!! SWA13: Creacion local, accesos y trunk hacia R2
+config t
+
+!! Creacion
+vlan 30
+name ACADEMICOS
+vlan 40
+name FINANZAS
+vlan 90
+name BLACKHOLE
+vlan 99
+name NATIVA
+exit
+
+!! Asignacion de acceso
+int e1/0
+description PC Academicos
+switchport mode access
+switchport access vlan 30
+spanning-tree portfast
+exit
+
+int e2/0
+description PC Finanzas
+switchport mode access
+switchport access vlan 40
+spanning-tree portfast
+exit
+
+!! Enlace Troncal hacia R2
+int e0/0
+description Troncal a R2
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 30,40,90,99
+exit
+do wr

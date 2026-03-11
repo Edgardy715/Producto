@@ -1,0 +1,27 @@
+!!!!!!!!!!! Configuracion inicial SW
+!! Configuracion basica
+en
+conf t
+hostname SW
+no ip domain-lookup
+service password-encryption
+ip domain-name grupo6.com
+crypto key generate rsa general-keys modulus 1024
+
+
+!!!!! Linea de consola
+lin con 0
+password grupo6
+login
+logging synchronous
+exec-timeout 0 0
+exit
+
+!!!!! Linea VTY
+lin vty 0 4
+password grupo6
+login
+transport input ssh
+exit
+
+do wr

@@ -1,0 +1,20 @@
+!! SWAC2: Puertos de Acceso y Troncales de subida
+config t
+
+!! Asignacion de acceso (Estudiantes)
+int e2/0
+description PC Estudiantes
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+exit
+
+!! Enlaces Troncales hacia SWM1 y SWM2
+int range e0/0-1
+description Troncales hacia Multicapas
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,60,70,80,90,99
+exit
+do wr

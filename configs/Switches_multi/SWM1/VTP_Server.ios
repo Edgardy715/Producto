@@ -1,0 +1,24 @@
+!!!!!!!!!!!!!!!!!! Configuracion de servidor VTP en SWM1 
+
+en
+conf t
+vtp domain grupo6
+vtp mode server
+vtp password itla
+
+vlan 10
+name ESTUDIANTES
+vlan 20
+name DOCENTES
+vlan 60
+name GESTION
+vlan 70
+name VOZ
+vlan 80
+name BLACKHULL_R1
+vlan 90
+name BLACKHOLE
+vlan 99
+name NATIVA
+exit
+do wr

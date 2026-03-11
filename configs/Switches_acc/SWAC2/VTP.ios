@@ -1,0 +1,7 @@
+!!!!!!!!!!!!!!!!!! Configuracion de cliente VTP en SWAC2 
+en
+conf t
+vtp domain grupo6
+vtp mode client
+vtp password itla
+do wr

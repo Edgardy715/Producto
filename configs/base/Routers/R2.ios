@@ -1,0 +1,66 @@
+!!!!! Configuracion inicial R2
+!! Configuracion basica
+en
+config t
+hostname R2
+no ip domain-lookup
+ipv6 unicast-routing
+service password-encryption
+ip domain-name grupo6.com
+crypto key generate rsa general-keys modulus 1024
+
+!!!!! Linea de consola
+lin con 0
+password grupo6
+login
+logging synchronous
+exec-timeout 0 0
+exit
+
+!!!!! Linea VTY
+lin vty 0 4
+password grupo6
+login
+transport input ssh
+exit
+
+
+!!!!!!!! Configuracion de interfaces
+int e0/0
+description Vlans finanzas y academicos
+no sh
+exit
+
+!! Configurando las subinterfaces para las vlans
+int e0/0.30
+encapsulation dot1Q 30
+ip address 172.26.9.1 255.255.255.128
+ipv6 address 2001:25:26:3::1/64
+
+int e0/0.40
+encapsulation dot1Q 40
+ip address 172.26.9.129 255.255.255.128
+ipv6 address 2001:25:26:4::1/64
+
+int e0/1
+description DATACENTER
+no sh
+
+int e0/1.50
+encapsulation dot1Q 50
+ip address 172.26.10.1 255.255.255.192
+ipv6 address 2001:25:26:5::1/64
+
+int e0/1.90
+encapsulation dot1Q 90
+ip address 172.26.10.145 255.255.255.240
+ipv6 address 2001:25:26:9::1/64
+
+int s1/0
+description Conexion a R1
+ip address 172.26.10.161 255.255.255.252
+ipv6 address 2001:25:26:10::1/64
+no sh
+exit
+
+do wr

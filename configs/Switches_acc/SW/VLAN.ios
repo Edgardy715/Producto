@@ -1,0 +1,29 @@
+!! SW: Creacion local, acceso y trunk hacia R2
+config t
+
+!! Creacion
+vlan 50
+name DATACENTER
+vlan 90
+name BLACKHOLE
+vlan 99
+name NATIVA
+exit
+
+!! Asignacion de acceso
+int e0/1
+description Servidor Datacenter
+switchport mode access
+switchport access vlan 50
+spanning-tree portfast
+exit
+
+!! Enlace Troncal hacia R2
+int e0/0
+description Troncal a R2
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 50,90,99
+exit
+do wr
