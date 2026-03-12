@@ -2,7 +2,7 @@
 config t
 
 !! Asignacion de acceso (Estudiantes)
-int e2/0
+int e1/0
 description PC Estudiantes
 switchport mode access
 switchport access vlan 10

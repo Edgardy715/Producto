@@ -55,4 +55,7 @@ ipv6 address 2001:25:26:10::2/64
 no sh
 exit
 
+ip route 0.0.0.0 0.0.0.0 e0/2
+ipv6 route ::/0 e0/2
+
 do wr

@@ -1,14 +1,19 @@
 !! SWM2: Interfaces Virtuales y HSRP (Gateway de Respaldo)
 config t
 ip routing
+ipv6 unicast-routing
 
 !! SVI VLAN 10 - ESTUDIANTES
 int vlan 10
 ip address 172.26.0.3 255.255.248.0
 ipv6 address 2001:25:26:1::3/64
+standby version 2
+!! HSRP IPv4
 standby 10 ip 172.26.0.1
-standby 10 ipv6 2001:25:26:1::1
 standby 10 preempt
+!! HSRP IPv6
+standby 11 ipv6 autoconfig
+standby 11 preempt
 no sh
 exit
 
@@ -16,9 +21,13 @@ exit
 int vlan 20
 ip address 172.26.8.3 255.255.255.0
 ipv6 address 2001:25:26:2::3/64
+standby version 2
+!! HSRP IPv4
 standby 20 ip 172.26.8.1
-standby 20 ipv6 2001:25:26:2::1
 standby 20 preempt
+!! HSRP IPv6
+standby 21 ipv6 autoconfig
+standby 21 preempt
 no sh
 exit
 
@@ -26,9 +35,13 @@ exit
 int vlan 60
 ip address 172.26.10.67 255.255.255.224
 ipv6 address 2001:25:26:6::3/64
+standby version 2
+!! HSRP IPv4
 standby 60 ip 172.26.10.65
-standby 60 ipv6 2001:25:26:6::1
 standby 60 preempt
+!! HSRP IPv6
+standby 61 ipv6 autoconfig
+standby 61 preempt
 no sh
 exit
 
@@ -36,9 +49,13 @@ exit
 int vlan 70
 ip address 172.26.10.99 255.255.255.224
 ipv6 address 2001:25:26:7::3/64
+standby version 2
+!! HSRP IPv4
 standby 70 ip 172.26.10.97
-standby 70 ipv6 2001:25:26:7::1
 standby 70 preempt
+!! HSRP IPv6
+standby 71 ipv6 autoconfig
+standby 71 preempt
 no sh
 exit
 
@@ -46,9 +63,13 @@ exit
 int vlan 80
 ip address 172.26.10.131 255.255.255.240
 ipv6 address 2001:25:26:8::3/64
+standby version 2
+!! HSRP IPv4
 standby 80 ip 172.26.10.129
-standby 80 ipv6 2001:25:26:8::1
 standby 80 preempt
+!! HSRP IPv6
+standby 81 ipv6 autoconfig
+standby 81 preempt
 no sh
 exit
 

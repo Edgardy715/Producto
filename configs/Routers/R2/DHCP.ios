@@ -1,0 +1,27 @@
+!!!!!!!!!! Configuracion DHCP de R2
+
+
+!! Excluir las direcciones de los routers y otros servicios
+conf t
+ip dhcp excluded-address 172.26.9.1 172.26.9.10
+ip dhcp excluded-address 172.26.9.129 172.26.9.140
+
+
+!!! Dhcp para Vlan academicos
+ip dhcp pool VLAN30-ACADEMICOS
+network 172.26.9.0 255.255.255.128
+default-router 172.26.9.1
+dns-server 8.8.8.8
+domain-name grupo6.com
+exit
+
+
+!!! DHCP para vlan finanzas
+ip dhcp pool VLAN40-FINANZAS
+network 172.26.9.128 255.255.255.128
+default-router 172.26.9.129
+dns-server 8.8.8.8
+domain-name grupo6.com
+exit
+
+do wr
