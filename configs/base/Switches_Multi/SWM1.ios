@@ -11,8 +11,6 @@ crypto key generate rsa general-keys modulus 1024
 
 !!!!! Linea de consola
 lin con 0
-password grupo6
-login
 logging synchronous
 exec-timeout 0 0
 exit

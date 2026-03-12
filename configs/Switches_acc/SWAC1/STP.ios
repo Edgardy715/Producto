@@ -1,0 +1,5 @@
+!! Capa de Acceso: Habilitar modo rápido de STP
+config t
+spanning-tree mode rapid-pvst
+exit
+do wr

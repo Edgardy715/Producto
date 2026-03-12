@@ -1,0 +1,53 @@
+!! SWM1: Configuracion del Servidor DHCP
+config t
+
+!! 1. Excluir las direcciones de los Gateways y Switches
+ip dhcp excluded-address 172.26.0.1 172.26.0.10
+ip dhcp excluded-address 172.26.8.1 172.26.8.10
+ip dhcp excluded-address 172.26.10.65 172.26.10.69
+ip dhcp excluded-address 172.26.10.97 172.26.10.101
+ip dhcp excluded-address 172.26.10.129 172.26.10.132
+
+!! 2. Crear los Pools para cada VLAN
+
+!! Pool VLAN 10 - ESTUDIANTES
+ip dhcp pool VLAN10_ESTUDIANTES
+network 172.26.0.0 255.255.248.0
+default-router 172.26.0.1
+dns-server 8.8.8.8
+domain-name grupo6.com
+exit
+
+!! Pool VLAN 20 - DOCENTES
+ip dhcp pool VLAN20_DOCENTES
+network 172.26.8.0 255.255.255.0
+default-router 172.26.8.1
+dns-server 8.8.8.8
+domain-name grupo6.com
+exit
+
+!! Pool VLAN 60 - GESTION
+ip dhcp pool VLAN60_GESTION
+network 172.26.10.64 255.255.255.224
+default-router 172.26.10.65
+dns-server 8.8.8.8
+domain-name grupo6.com
+exit
+
+!! Pool VLAN 70 - VOZ
+ip dhcp pool VLAN70_VOZ
+network 172.26.10.96 255.255.255.224
+default-router 172.26.10.97
+dns-server 8.8.8.8
+domain-name grupo6.com
+exit
+
+!! Pool VLAN 80 - BLACKHULL_R1
+ip dhcp pool VLAN80_BLACKHULL
+network 172.26.10.128 255.255.255.240
+default-router 172.26.10.129
+dns-server 8.8.8.8
+domain-name grupo6.com
+exit
+
+do wr

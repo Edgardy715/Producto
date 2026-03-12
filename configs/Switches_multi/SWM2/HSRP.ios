@@ -1,0 +1,55 @@
+!! SWM2: Interfaces Virtuales y HSRP (Gateway de Respaldo)
+config t
+ip routing
+
+!! SVI VLAN 10 - ESTUDIANTES
+int vlan 10
+ip address 172.26.0.3 255.255.248.0
+ipv6 address 2001:25:26:1::3/64
+standby 10 ip 172.26.0.1
+standby 10 ipv6 2001:25:26:1::1
+standby 10 preempt
+no sh
+exit
+
+!! SVI VLAN 20 - DOCENTES
+int vlan 20
+ip address 172.26.8.3 255.255.255.0
+ipv6 address 2001:25:26:2::3/64
+standby 20 ip 172.26.8.1
+standby 20 ipv6 2001:25:26:2::1
+standby 20 preempt
+no sh
+exit
+
+!! SVI VLAN 60 - GESTION
+int vlan 60
+ip address 172.26.10.67 255.255.255.224
+ipv6 address 2001:25:26:6::3/64
+standby 60 ip 172.26.10.65
+standby 60 ipv6 2001:25:26:6::1
+standby 60 preempt
+no sh
+exit
+
+!! SVI VLAN 70 - VOZ
+int vlan 70
+ip address 172.26.10.99 255.255.255.224
+ipv6 address 2001:25:26:7::3/64
+standby 70 ip 172.26.10.97
+standby 70 ipv6 2001:25:26:7::1
+standby 70 preempt
+no sh
+exit
+
+!! SVI VLAN 80 - BLACKHULL_R1
+int vlan 80
+ip address 172.26.10.131 255.255.255.240
+ipv6 address 2001:25:26:8::3/64
+standby 80 ip 172.26.10.129
+standby 80 ipv6 2001:25:26:8::1
+standby 80 preempt
+no sh
+exit
+
+do wr

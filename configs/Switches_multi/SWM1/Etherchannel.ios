@@ -1,0 +1,19 @@
+!! SWM1: Configuracion de EtherChannel (LACP) hacia SWM2
+config t
+
+!! 1. Agrupar las interfaces fisicas
+int range e0/1-3
+description Enlaces fisicos LACP hacia SWM2
+channel-protocol lacp
+channel-group 1 mode active
+exit
+
+!! 2. Configurar la interfaz logica (Port-Channel)
+int port-channel 1
+description EtherChannel Troncal a SWM2
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,60,70,80,90,99
+exit
+do wr
