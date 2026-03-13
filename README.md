@@ -1,20 +1,20 @@
-# Proyecto de Implementación Empresarial - Redes 🚀
+# Proyecto de Implementación Empresarial - Redes 
 
 **Instituto Tecnológico de Las Américas (ITLA)** **Materia:** Conmutación y Enrutamiento (TI-203)  
 **Profesor:** Onel Luis Pelegrino  
 
 ---
 
-## 📌 Descripción del Proyecto
+## Descripción del Proyecto
 Este repositorio contiene la documentación, configuraciones y scripts del **Proyecto de implementación de Empresarial**. El objetivo principal es crear una red confiable, segura y escalable para una mediana empresa. 
 
 La infraestructura está diseñada para soportar segmentación por departamentos (VLANs), alta disponibilidad en el gateway (HSRP), redundancia de enlaces (EtherChannel, STP), enrutamiento interior con OSPFv2 (soportando crecimiento multiarea) y políticas de seguridad estrictas basadas en ACLs.
 
-## 🏗️ Entorno de Trabajo
+## Entorno de Trabajo
 * **Simulador:** Implementación en PNETLab.
 * **Testing:** Scripts para VPCS en PNETLab (Ver directorio `scripts/testing`.
 
-## 📁 Estructura del Repositorio
+## 📁Estructura del Repositorio
 Para mantener el proyecto modular y organizado, utilizamos la siguiente estructura:
 
 * 📂 **`docs/`**: Documentación oficial, tablas de direccionamiento (VLSM/IPv6) y diagramas de topología.
@@ -24,7 +24,7 @@ Para mantener el proyecto modular y organizado, utilizamos la siguiente estructu
   * `routers/` & `switches/`: Configuraciones específicas por nodo.
 * 📂 **`scripts/`**: Herramientas para validación de red.
 
-## ✅ Criterios de Aceptación Generales
+##  Criterios de Aceptación Generales
 El proyecto se considerará exitoso cuando cumpla con los siguientes puntos:
 1. Conectividad entre VLANs según política definida.
 2. Redundancia de gateway funcional (HSRP) con failover probado.
