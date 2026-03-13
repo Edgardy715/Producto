@@ -5,6 +5,7 @@ config t
 router ospf 1
 router-id 2.2.2.2
 passive-interface default
+auto-cost reference-bandwidth 1000
 !! Permitimos que OSPF hable SOLO por el cable serial hacia R1
 no passive-interface s1/0  
 exit

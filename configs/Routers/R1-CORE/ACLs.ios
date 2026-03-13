@@ -1,19 +1,22 @@
- enable
+!!!!!!!!!!!!! Configuracion ACLs para R1-CORE
+enable
 conf t
 
 ip access-list extended ACL_ROUTER_CORE
- remark PERMITIR ADMINISTRACION DESDE BLACKHULL
- permit tcp 172.26.10.128 0.0.0.15 any eq 22
- permit tcp 172.26.10.144 0.0.0.15 any eq 22
-
- remark PERMITIR TRAFICO INTERNO
- permit ip 172.26.0.0 0.0.15.255 any
-
- remark BLOQUEAR ACCESOS NO AUTORIZADOS
- deny ip any any
+remark PERMITIR TRAFICO DE OSPF (VITAL)
+permit ospf any any
+remark PERMITIR ADMINISTRACION DESDE BLACKHULL
+permit tcp 172.26.10.128 0.0.0.15 any eq 22
+permit tcp 172.26.10.144 0.0.0.15 any eq 22
+remark PERMITIR TRAFICO INTERNO HACIA AFUERA
+permit ip 172.26.0.0 0.0.15.255 any
+remark BLOQUEAR CUALQUIER OTRA COSA
+deny ip any any
+exit
 
 interface s1/0
- ip access-group ACL_ROUTER_CORE in
+ip access-group ACL_ROUTER_CORE in
+exit
 
 end
 write memory

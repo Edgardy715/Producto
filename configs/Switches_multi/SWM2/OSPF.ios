@@ -6,6 +6,7 @@ router ospf 1
 router-id 1.1.1.3
 passive-interface default
 no passive-interface e0/0
+auto-cost reference-bandwidth 1000
 exit
 
 int e0/0

@@ -5,6 +5,7 @@ config t
 router ospf 1
 router-id 1.1.1.1
 passive-interface default
+auto-cost reference-bandwidth 1000
 no passive-interface s1/0
 no passive-interface e0/0
 no passive-interface e0/1
