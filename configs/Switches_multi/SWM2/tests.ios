@@ -1,0 +1,20 @@
+enable
+
+show ip interface brief
+show vlan brief
+show interfaces trunk
+
+show etherchannel summary
+show spanning-tree
+
+show standby brief
+
+show ip route
+show ip ospf neighbor
+
+show access-lists
+
+ping 172.26.0.1
+ping 172.26.8.1
+ping 172.26.9.1
+ping 172.26.10.65
