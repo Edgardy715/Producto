@@ -1,4 +1,4 @@
-ipconfig
+ip dhcp
 ping 172.26.0.1
 ping 172.26.8.1
 ping 172.26.9.129
