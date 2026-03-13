@@ -1,0 +1,16 @@
+enable
+
+show ip interface brief
+show ip route
+
+show ip ospf neighbor
+show ip ospf database
+
+show access-lists
+
+show ip dhcp pool
+show ip dhcp binding
+
+ping 172.26.9.1
+ping 172.26.9.129
+ping 172.26.10.65
