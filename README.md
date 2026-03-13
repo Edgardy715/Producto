@@ -39,10 +39,10 @@ El despliegue está dividido en tres fases principales:
 * **Sprint 3 (Semana 3) — Enrutamiento, seguridad, pruebas y documentación final:** Despliegue de OSPFv2, ACLs y ejecución de casos de prueba.
 
 ## 👥 Equipo de Trabajo
-* **Edgardy** - *[Por definir...]*
-* **Michael Robles** - *[Por definir...]*
-* **Josue Santana** - *[Por definir...]*
-* **Sael Regalado Gregorio** - *[Por definir...]*
+* **Edgardy**
+* **Michael Robles**
+* **Josue Santana**
+* **Sael Regalado Gregorio**
 
 ---
 *Documentación mantenida por el equipo de TI-203. Prohibida la copia para otros periodos académicos.*
