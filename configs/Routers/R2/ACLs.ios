@@ -1,0 +1,17 @@
+enable
+conf t
+
+ip access-list extended ACL_R2_SEGURIDAD
+ remark PERMITIR TRAFICO CORPORATIVO
+ permit ip 172.26.0.0 0.0.15.255 any
+
+ remark BLOQUEAR REDES EXTERNAS NO AUTORIZADAS
+ deny ip any 172.26.0.0 0.0.15.255
+
+ permit ip any any
+
+interface s1/0
+ ip access-group ACL_R2_SEGURIDAD in
+
+end
+write memory
