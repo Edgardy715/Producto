@@ -1,0 +1,61 @@
+: enable
+conf t
+
+ip access-list extended ACL_ESTUDIANTES
+ remark BLOQUEAR ESTUDIANTES HACIA REDES INTERNAS
+ deny ip 172.26.0.0 0.0.7.255 172.26.8.0 0.0.0.255
+ deny ip 172.26.0.0 0.0.7.255 172.26.9.0 0.0.1.255
+ deny ip 172.26.0.0 0.0.7.255 172.26.10.0 0.0.0.255
+ remark PERMITIR SALIDA A INTERNET
+ permit ip 172.26.0.0 0.0.7.255 any
+
+ip access-list extended ACL_DATACENTER
+ remark PERMITIR DOCENTES
+ permit ip 172.26.8.0 0.0.0.255 172.26.10.0 0.0.0.63
+ remark PERMITIR ACADEMICOS
+ permit ip 172.26.9.0 0.0.0.127 172.26.10.0 0.0.0.63
+ remark PERMITIR FINANZAS
+ permit ip 172.26.9.128 0.0.0.127 172.26.10.0 0.0.0.63
+ remark PERMITIR GESTION
+ permit ip 172.26.10.64 0.0.0.31 172.26.10.0 0.0.0.63
+ remark BLOQUEAR OTROS ACCESOS
+ deny ip any 172.26.10.0 0.0.0.63
+ permit ip any any
+
+ip access-list extended ACL_FINANZAS
+ remark SOLO GESTION ACCEDE A FINANZAS
+ permit ip 172.26.10.64 0.0.0.31 172.26.9.128 0.0.0.127
+ remark BLOQUEAR OTRAS REDES
+ deny ip any 172.26.9.128 0.0.0.127
+ permit ip any any
+
+ip access-list extended ACL_ADMIN
+ remark ADMINISTRACION DE DISPOSITIVOS
+ permit ip 172.26.10.128 0.0.0.15 any
+ permit ip 172.26.10.144 0.0.0.15 any
+ deny ip any any
+
+ip access-list extended ACL_VOZ
+ remark PERMITIR TRAFICO VOIP
+ permit ip 172.26.10.96 0.0.0.31 any
+
+interface vlan 10
+ ip access-group ACL_ESTUDIANTES in
+
+interface vlan 40
+ ip access-group ACL_FINANZAS in
+
+interface vlan 50
+ ip access-group ACL_DATACENTER in
+
+interface vlan 70
+ ip access-group ACL_VOZ in
+
+interface vlan 80
+ ip access-group ACL_ADMIN in
+
+interface vlan 90
+ ip access-group ACL_ADMIN in
+
+end
+write memory
