@@ -12,7 +12,7 @@ La infraestructura está diseñada para soportar segmentación por departamentos
 
 ## 🏗️ Entorno de Trabajo
 * **Simulador:** Implementación en PNETLab.
-* **Automatización y Testing:** Scripts en Python / Bash (Ver directorio `scripts/`).
+* **Testing:** Scripts para VPCS en PNETLab (Ver directorio `scripts/testing`.
 
 ## 📁 Estructura del Repositorio
 Para mantener el proyecto modular y organizado, utilizamos la siguiente estructura:
