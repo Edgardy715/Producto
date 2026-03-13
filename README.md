@@ -12,7 +12,7 @@ La infraestructura está diseñada para soportar segmentación por departamentos
 
 ## 🏗️ Entorno de Trabajo
 * **Simulador:** Implementación en PNETLab.
-* **Automatización y Testing:** Scripts en Python / Bash (Ver directorio `scripts/`).
+* **Testing:** Scripts para VPCS en PNETLab (Ver directorio `scripts/testing`.
 
 ## 📁 Estructura del Repositorio
 Para mantener el proyecto modular y organizado, utilizamos la siguiente estructura:
@@ -22,7 +22,7 @@ Para mantener el proyecto modular y organizado, utilizamos la siguiente estructu
 * 📂 **`configs/`**: 
   * `base/`: Plantillas de configuración inicial (seguridad, accesos, contraseñas).
   * `routers/` & `switches/`: Configuraciones específicas por nodo.
-* 📂 **`scripts/`**: Herramientas para validación de red y pruebas automatizadas.
+* 📂 **`scripts/`**: Herramientas para validación de red.
 
 ## ✅ Criterios de Aceptación Generales
 El proyecto se considerará exitoso cuando cumpla con los siguientes puntos:
