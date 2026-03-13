@@ -1,0 +1,27 @@
+!!!!!!!!!!!!!! Configuracion de OSPF en R1-CORE
+
+config t
+
+router ospf 1
+router-id 1.1.1.1
+passive-interface default
+no passive-interface s1/0
+no passive-interface e0/0
+no passive-interface e0/1
+default-information originate always
+exit
+
+int rang e0/0-1
+ip ospf 1 area 0
+exit
+
+int s1/0
+ip ospf 1 area 0
+exit
+
+!! Interfaz a internet
+int e0/2
+ip ospf 1 area 0
+exit
+
+do wr

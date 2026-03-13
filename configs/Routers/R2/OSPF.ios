@@ -1,0 +1,34 @@
+!!!!!!!!!!!!!! Configuracion de OSPF en R2 (Sucursal)
+config t
+
+!! 1. Levantar el proceso y asegurar la red
+router ospf 1
+router-id 2.2.2.2
+passive-interface default
+!! Permitimos que OSPF hable SOLO por el cable serial hacia R1
+no passive-interface s1/0  
+exit
+
+!! 2. Encender OSPF en la interfaz WAN (hacia R1-Core)
+int s1/0
+ip ospf 1 area 0
+exit
+
+!! 3. Inyectar las redes LAN locales a OSPF (Academicos y Finanzas)
+int e0/0.30
+ip ospf 1 area 0
+exit
+
+int e0/0.40
+ip ospf 1 area 0
+exit
+
+int e0/1.50
+ip ospf 1 area 0
+exit
+
+int e0/1.90
+ip ospf 1 area 0
+exit
+
+do wr

@@ -1,0 +1,19 @@
+!!!!!!!!!!!!!! Configuracion de OSPF en SWM2
+
+config t
+
+router ospf 1
+router-id 1.1.1.3
+passive-interface default
+no passive-interface e0/0
+exit
+
+int e0/0
+ip ospf 1 area 0
+exit
+
+int rang vlan 10, vlan 20, vlan 60, vlan 70, vlan 80
+ip ospf 1 area 0
+exit
+
+do wr
